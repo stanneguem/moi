@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Neguem Tamo Stan Gabriel</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        .hero-content {
+            color: white;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            animation: fadeInUp 1s 0.1s backwards;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            line-height: 1.8;
+            max-width: 700px;
+            animation: fadeInUp 1s 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-custom {
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .btn-custom:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-download {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .about-section {
+            padding: 100px 0;
+        }
+
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s;
+            height: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .info-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .info-card h4 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .info-item strong {
+            color: var(--dark);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .skills-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .skill-badge {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .skill-badge.animate {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.4s ease;
+        }
+
+        .skill-badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .projects-section {
+            padding: 100px 0;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .project-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.1);
+        }
+
+        .project-body {
+            padding: 25px;
+        }
+
+        .project-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--primary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05);
+        }
+
+        .cert-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .cert-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary);
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .cert-card.animate {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 0.6s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .cert-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid #e2e8f0;
+        }
+
+        .cert-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .experience-section {
+            padding: 100px 0;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--secondary);
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .timeline-item.animate {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-item h4 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .timeline-date {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .contact-info.animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+
+        .contact-info i {
+            font-size: 1.5rem;
+            margin-right: 20px;
+            width: 40px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            margin: 10px;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .social-links a.animate {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.4s ease;
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">STG Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">À Propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Expérience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Neguem Tamo Stan Gabriel</h1>
+                <div class="subtitle">Software Developer | Développeur Mobile & Web</div>
+                <p>Jeune passionné de technologie, curieux d'apprendre et de transmettre mes compétences. J'aime relever
+                    de nouveaux défis et expériences. Mes objectifs sont d'apporter des solutions innovantes et
+                    sécurisées pour répondre aux défis technologiques actuels, de mettre en place des produits et
+                    services de forte valeur ajoutée, ainsi que d'en apprendre un maximum du travail collaboratif.</p>
+                <div>
+                    <a href="#contact" class="btn btn-custom">Me Contacter</a>
+                    <a href="Doc1.pdf" class="btn btn-custom btn-download" onclick="Doc1.pdf">
+                        <i class="fas fa-download"></i> Voir le CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">À Propos de Moi</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="info-card text-center">
+                        <i class="fas fa-user"></i>
+                        <h4>Informations Personnelles</h4>
+                        <div class="info-item">
+                            <strong>Nom Complet</strong>
+                            <span>Neguem Tamo Stan Gabriel</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Date de Naissance</strong>
+                            <span>05 Septembre 2002</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Lieu</strong>
+                            <span>Yaoundé, Cameroun</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Nationalité</strong>
+                            <span>Camerounaise</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <div class="text-center">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h4>Formation Académique</h4>
+                        </div>
+                        <div class="info-item">
+                            <strong>Baccalauréat Général</strong>
+                            <span>Lycée Moderne de Nkozoa</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>BTS en Génie Logiciel</strong>
+                            <span>ESMATA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <div class="text-center">
+                            <i class="fas fa-certificate"></i>
+                            <h4>Formation Professionnelle</h4>
+                        </div>
+                        <div class="info-item">
+                            <strong>Développement Mobile Flutter</strong>
+                            <span>Localhost Academy (2024-2025)</span>
+                            <small class="d-block text-muted mt-1">UI/UX, State Management (BLOC, GetX), API
+                                Integration</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <div class="text-center">
+                            <i class="fas fa-language"></i>
+                            <h4>Langues</h4>
+                        </div>
+                        <div class="info-item">
+                            <strong>Français</strong>
+                            <span>Avancé</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Anglais</strong>
+                            <span>Intermédiaire</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <div class="text-center">
+                            <i class="fas fa-star"></i>
+                            <h4>Qualités Professionnelles</h4>
+                        </div>
+                        <div class="info-item">
+                            <span>✓ Sens du travail et grande assimilation</span>
+                        </div>
+                        <div class="info-item">
+                            <span>✓ Travail collaboratif et sous pression</span>
+                        </div>
+                        <div class="info-item">
+                            <span>✓ Organisé, rigoureux et dynamique</span>
+                        </div>
+                        <div class="info-item">
+                            <span>✓ Ouvert d'esprit et bonnes qualités relationnelles</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Expérience Professionnelle</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="timeline-item">
+                        <h4><i class="fas fa-chalkboard-teacher"></i> Enseignant d'Informatique</h4>
+                        <div class="timeline-date"><i class="far fa-calendar"></i> 2024-2025 | Collège la REFORME</div>
+                        <p>Enseignant d'informatique dans les classes de 4ème ALL, Première EST, Tle A4esp et Tle ALL
+                        </p>
+                        <ul>
+                            <li>Formation des élèves aux concepts informatiques</li>
+                            <li>Encadrement et suivi pédagogique</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="timeline-item">
+                        <h4><i class="fas fa-mobile-alt"></i> Gestionnaire de Compte OM</h4>
+                        <div class="timeline-date"><i class="far fa-calendar"></i> 2024-2025 | Orange Cameroun</div>
+                        <p>Stage - Création et gestion des comptes Orange Money</p>
+                        <ul>
+                            <li>Gestion de portefeuille clients</li>
+                            <li>Support et assistance technique</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="timeline-item">
+                        <h4><i class="fas fa-laptop-code"></i> Développeur Web</h4>
+                        <div class="timeline-date"><i class="far fa-calendar"></i> Juin-Juillet 2023 | LASYLAB</div>
+                        <p>Stage - Développement Web</p>
+                        <ul>
+                            <li>Conception d'interfaces web avec HTML, CSS</li>
+                            <li>Interactions client avec JavaScript</li>
+                            <li>Gestion backend avec PHP et MySQL</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="timeline-item">
+                        <h4><i class="fas fa-code"></i> Développeur Freelance</h4>
+                        <div class="timeline-date"><i class="far fa-calendar"></i> En cours</div>
+                        <p>Développement de solutions personnalisées</p>
+                        <ul>
+                            <li>Conception de sites web avec HTML, CSS et JavaScript</li>
+                            <li>Réalisation de bots Python avec python-telegram-bot</li>
+                            <li>Projets clients variés</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Compétences Techniques</h2>
+            <div class="text-center">
+                <span class="skill-badge"><i class="fab fa-flutter"></i> Flutter</span>
+                <span class="skill-badge"><i class="fab fa-laravel"></i> Laravel</span>
+                <span class="skill-badge"><i class="fab fa-html5"></i> HTML5</span>
+                <span class="skill-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span class="skill-badge"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="skill-badge"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                <span class="skill-badge"><i class="fab fa-python"></i> Python</span>
+                <span class="skill-badge"><i class="fab fa-php"></i> PHP</span>
+                <span class="skill-badge"><i class="fas fa-database"></i> MySQL</span>
+                <span class="skill-badge"><i class="fab fa-telegram"></i> Bots Telegram</span>
+                <span class="skill-badge"><i class="fas fa-mobile-alt"></i> Mobile Development</span>
+                <span class="skill-badge"><i class="fas fa-server"></i> Backend Development</span>
+                <span class="skill-badge"><i class="fas fa-fire"></i> Firebase</span>
+                <span class="skill-badge"><i class="fas fa-paint-brush"></i> UI/UX Design</span>
+                <span class="skill-badge"><i class="fas fa-project-diagram"></i> State Management (BLOC, GetX)</span>
+                <span class="skill-badge"><i class="fas fa-plug"></i> REST API</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Mes Projets</h2>
+
+            <h3 class="text-center mb-5 animate-on-scroll"><i class="fas fa-mobile-alt"></i> Applications Mobile</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="project-card" data-project="trading">
+                        <img src="img\trader_journey.png" alt="Trading Journey" class="project-img">
+                        <div class="project-body">
+                            <span class="project-badge">Mobile - Flutter</span>
+                            <h4>Trading Journey</h4>
+                            <p>Application de suivi pour traders permettant d'analyser et gérer leurs transactions en
+                                temps réel.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="project-card" data-project="cinmash">
+                        <img src="img\cimash\Screenshot_20251018-124721-portrait.png" alt="Cinmash" class="project-img">
+                        <div class="project-body">
+                            <span class="project-badge">Mobile - Flutter</span>
+                            <h4>Cinmash</h4>
+                            <p>Application de mise en relation entre cinéastes, facilitant la collaboration sur des
+                                projets audiovisuels.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="project-card" data-project="kampus">
+                        <img src="img\mapus_img.png" alt="Kampus" class="project-img">
+                        <div class="project-body">
+                            <span class="project-badge">Mobile - Flutter</span>
+                            <h4>Kampus</h4>
+                            <p>Réseau social dédié aux étudiants pour partager des ressources, collaborer et se
+                                connecter.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-center mt-5 mb-5 animate-on-scroll"><i class="fas fa-laptop-code"></i> Applications Web</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="project-card" data-project="kampus-backend">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&h=300&fit=crop"
+                            alt="Kampus Backend" class="project-img">
+                        <div class="project-body">
+                            <span class="project-badge">Web - Laravel</span>
+                            <h4>Kampus Backend</h4>
+                            <p>API REST robuste développée avec Laravel pour alimenter l'application mobile Kampus.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="project-card" data-project="cinmash-web">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=300&fit=crop"
+                            alt="Cinmash Web" class="project-img">
+                        <div class="project-body">
+                            <span class="project-badge">Web - Laravel</span>
+                            <h4>Cinmash Version Web</h4>
+                            <p>Plateforme web complète pour la mise en relation des cinéastes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-center mt-5 mb-5 animate-on-scroll"><i class="fab fa-telegram"></i> Bots & Automatisation
+            </h3>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="project-card" data-project="telegram-bot">
+                        <img src="https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=500&h=300&fit=crop"
+                            alt="Telegram Bot" class="project-img">
+                        <div class="project-body">
+                            <span class="project-badge">Python - Telegram</span>
+                            <h4>Bots Telegram</h4>
+                            <p>Création de bots Telegram personnalisés pour automatisation et gestion de communautés.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="cert-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Certifications</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="cert-card">
+                        <h4><i class="fas fa-certificate text-primary"></i> BTS en Génie Logiciel</h4>
+                        <p class="mb-1"><strong>Institution:</strong> ESMATA</p>
+                        <p class="mb-3">Formation complète en développement logiciel et gestion de projets
+                            informatiques.</p>
+                        <img src="img\esmata.jpeg" alt="Certificat BTS" class="cert-image"
+                            onclick="openImageModal(this.src)">
+                        <p class="text-center mt-2"><small class="text-muted">Cliquez pour agrandir</small></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="cert-card">
+                        <h4><i class="fas fa-certificate text-primary"></i> Formation Développement Mobile Flutter</h4>
+                        <p class="mb-1"><strong>Institution:</strong> Localhost Academy</p>
+                        <p class="mb-1"><strong>Période:</strong> 2024-2025</p>
+                        <p class="mb-3">Formation intensive en développement d'applications mobiles avec Flutter,
+                            incluant UI/UX, state management et intégration d'APIs.</p>
+                        <img src="img\20251026_130511.jpg" alt="Certificat Flutter" class="cert-image"
+                            onclick="openImageModal(this.src)">
+                        <p class="text-center mt-2"><small class="text-muted">Cliquez pour agrandir</small></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="cert-card">
+                        <h4><i class="fas fa-certificate text-primary"></i> Baccalauréat Général</h4>
+                        <p class="mb-1"><strong>Institution:</strong> Lycée Moderne de Nkozoa</p>
+                        <p class="mb-3">Diplôme de fin d'études secondaires obtenu avec mention.</p>
+                        <img src="img\lycee.jpeg" alt="Diplôme Bac" class="cert-image"
+                            onclick="openImageModal(this.src)">
+                        <p class="text-center mt-2"><small class="text-muted">Cliquez pour agrandir</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title text-white animate-on-scroll">Contact</h2>
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="text-center">
+                        <div class="contact-info">
+                            <i class="fas fa-phone"></i>
+                            <span>+237 697 308 818</span>
+                        </div>
+                        <div class="contact-info">
+                            <i class="fas fa-phone"></i>
+                            <span>+237 677 305 982</span>
+                        </div>
+                        <div class="contact-info">
+                            <i class="fas fa-envelope"></i>
+                            <span>stanneguerne@gmail.com</span>
+                        </div>
+                        <div class="contact-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Yaoundé, Cameroun</span>
+                        </div>
+
+                        <div class="social-links mt-5">
+                            <a href="https://github.com/stanneguem" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/stan-neguem-63267b311/" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" onclick="alert('c\'est pour plus tards')">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" onclick="alert('c\'est pour plus tards')">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </div>
+
+                        <div class="mt-5">
+                            <a href="mailto:stanneguerne@gmail.com" class="btn btn-custom me-3">
+                                <i class="fas fa-paper-plane"></i> Envoyer un Email
+                            </a>
+                            <a href="Doc1.pdf" class="btn btn-custom btn-download" onclick="">
+                                <i class="fas fa-download"></i> Voir le CV
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Neguem Tamo Stan Gabriel. Tous droits réservés.</p>
+            <p class="mt-2">
+                <a href="#home" class="text-white me-3"><i class="fas fa-arrow-up"></i> Retour en haut</a>
+                <a href="mailto:stanneguerne@gmail.com" class="text-white me-3"><i class="fas fa-envelope"></i>
+                    Email</a>
+                <a href="https://github.com/stanneguem" target="_blank" class="text-white"><i class="fab fa-github"></i>
+                    GitHub</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal pour l'affichage des images -->
+    <div class="modal fade" id="imageModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Visualisation</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" src="" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Fonction pour ouvrir l'image en modal
+        function openImageModal(src) {
+            document.getElementById('modalImage').src = src;
+            new bootstrap.Modal(document.getElementById('imageModal')).show();
+        }
+
+        // Animation du scroll pour les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation des éléments au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observer les éléments avec animations
+        document.querySelectorAll('.info-card, .project-card, .timeline-item, .cert-card').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Observer les badges de compétences
+        document.querySelectorAll('.skill-badge').forEach((badge, index) => {
+            observer.observe(badge);
+            badge.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Observer les éléments de contact
+        document.querySelectorAll('.contact-info, .social-links a').forEach((element, index) => {
+            observer.observe(element);
+            element.style.transitionDelay = `${index * 0.2}s`;
+        });
+
+        // Observer les titres de section
+        document.querySelectorAll('.section-title, .animate-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Navbar background au scroll
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Animation initiale pour les éléments visibles au chargement
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.info-card, .project-card, .timeline-item, .cert-card, .skill-badge, .contact-info, .social-links a, .section-title, .animate-on-scroll').forEach(element => {
+                if (element.getBoundingClientRect().top < window.innerHeight) {
+                    element.classList.add('animate');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
